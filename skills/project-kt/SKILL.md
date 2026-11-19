@@ -8,6 +8,12 @@ license: MIT
 
 Learn enough about the repository to give a developer or another agent a verified route into the code. Keep application code and configuration read-only. Write in the repository's documentation locations and honor a read-only request across the whole repo.
 
+## Communicate with the developer
+
+Phrase questions, answers, and explanations in plain language for a mid-level developer. Lead with the concrete behavior or decision and explain unfamiliar technical jargon briefly when it matters.
+
+Use the user's language for the conversation. When it is a language other than English, keep project-specific business terms in English. Prefer the English terms used in the project's glossary, docs, or code. Use a clear English equivalent when the project provides no English term, and explain its meaning in the user's language if needed.
+
 ## Choose the scope
 
 A bare invocation or a broad request to map, investigate, or understand the project starts a repository-wide discovery. Begin from the repository root and cover every major component, including shared modules and external integrations that affect the architecture. A named component or flow narrows the scope. A request to reconcile recent changes uses the sync workflow below.

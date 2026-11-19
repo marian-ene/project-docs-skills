@@ -8,6 +8,12 @@ license: MIT
 
 Work through one story with the developer until its behavior, boundaries, and key implementation decisions are clear. Use the repository's durable documentation as working context. Keep application code and configuration read-only during the walkthrough.
 
+## Communicate with the developer
+
+Phrase questions, answers, and explanations in plain language for a mid-level developer. Lead with the concrete behavior or decision and explain unfamiliar technical jargon briefly when it matters.
+
+Use the user's language for the conversation. When it is a language other than English, keep project-specific business terms in English. Prefer the English terms used in the project's glossary, docs, or code. Use a clear English equivalent when the project provides no English term, and explain its meaning in the user's language if needed.
+
 ## Ground the story
 
 - Read the story, acceptance criteria, and constraints supplied by the developer. Identify the affected flow and the outcome the story is meant to achieve.
