@@ -16,19 +16,24 @@ Use the user's language for the conversation. When it is a language other than E
 
 ## Choose the scope
 
-A bare invocation or a broad request to map, investigate, or understand the project starts a repository-wide discovery. Begin from the repository root and cover every major component, including shared modules and external integrations that affect the architecture. A named component or flow narrows the scope. A request to reconcile recent changes uses the sync workflow below.
+A bare invocation or a broad request to map, investigate, or understand the project starts a repository-wide discovery in short sessions. Begin from the repository root and build toward coverage of every major component, including shared modules and external integrations that affect the architecture. A named component or flow narrows the scope. A request to reconcile recent changes uses the sync workflow below.
 
 ## Discover and map the project
 
 1. Read the applicable repository instructions and locate the existing docs entry point. Use it to guide discovery. Survey the components and entry points in scope, how they fit together, and the data, contracts, or dependencies they share.
-2. Identify the main business flows and trace representative ones through code, tests, and configuration. Record the trigger, rules, handoffs, and outcome. Link consequential claims to files and name the relevant symbols or test scenarios. In a broad review, give each major component a place in the map and identify which flows have been traced in depth.
+2. Identify the main business flows and user journeys and trace representative ones through the relevant screens, code, tests, or configuration. Record the trigger, rules, handoffs, and outcome. Link consequential claims to files and name the relevant symbols or test scenarios. In a broad review, give each major component a place in the map and identify which flows have been traced in depth.
 3. Build or refresh the linked Markdown documentation as you go. Create or update a short entry point and an architecture map with the verified relationships. Add flow pages, glossary entries, coding standards, and decisions as the evidence and discussion warrant. Keep visible which findings describe observed behavior, which reflect confirmed intent, and which questions remain open.
 
-## Interview the developer as you go
+## Work in short, resumable sessions
 
-Initiate the interview yourself. Investigate facts you can verify from repository evidence first. Once you have evidence, ask focused questions about unresolved business rules, vocabulary, ownership, architecture rationale, or behavior that may conflict with the intended design. Show what you found and explain what the answer would change. Offer an interpretation or recommendation when the evidence supports one.
+A session is one useful pass over a bounded topic, such as a component boundary, a business flow, or a cluster of recent changes. Start with an existing KT continuation note when it matches the request. On a fresh repository-wide pass, build the high-level map and choose one area to trace. Treat whole-repo coverage as a goal across sessions.
 
-Ask the questions that can be answered now together. Use each answer to update the relevant page and ask any follow-ups it unlocks. Continue independent discovery while questions are open. Keep going until the material questions in scope are resolved or the developer defers them. If you need an answer to establish intent, ask it during the walkthrough and leave the point open in the meantime.
+1. Investigate the facts you can verify in code, tests, and existing docs. Add or refresh the relevant pages as you learn, including glossary entries, rules, and links. Record verified behavior and keep any unconfirmed intent open. Save this work before handing questions to the developer.
+2. Ask one round of up to five material questions, including confirmations in discovery and sync. Prioritize the questions that most affect the docs. Group related findings, show the evidence, and explain what each answer would change. Ask fewer when that covers the remaining material questions.
+3. Apply the answers you receive to the owning pages and summarize the round. When work remains, update a short continuation note in or linked from the docs index. Include the scope covered, links to relevant pages or evidence, deferred or unanswered questions, and the next area to investigate. Save the note before yielding control. If the developer asks to stop during a round, save the same handoff and finish.
+4. After saving the round, ask in the developer's language whether they want another round or want to stop here. Offer those two choices as a separate check-in, outside the five questions. Wait for an explicit choice to continue before starting another round of up to five. If they stop, finish with the saved handoff. When the requested work is complete, summarize the result and finish.
+
+On a later invocation, read the note and linked pages, skip settled questions, and verify evidence again where the code may have changed. If the developer requests read-only work, give the same continuation details in the session summary.
 
 ## Confirm important findings
 
@@ -46,13 +51,17 @@ Use this workflow when rerunning KT on a newer checkout or when the developer na
 
 If tracking a last-reviewed commit helps repeat this review, record it with the scope in the existing docs index. Advance it for that scope after review only when material findings have been resolved or explicitly tracked as open. An initial comparison against current code establishes coverage only for the areas actually reviewed.
 
+## Maintain documentation links
+
+Read [link usage and review](references/link-usage.md) when working with project documentation. Record links you use and review the relevant links in the areas you explore. Use the same local journal as Story Walkthrough. If a link requires a decision from the developer, include it within the five-question round or carry it to the continuation note.
+
 ## Build and maintain the documentation
 
 Use the repo's established structure. When there is none, start with a short `docs/README.md` linking to the first useful page. Add pages as evidence and scope warrant:
 
-- An architecture overview and pages under `docs/flows/` for what the system does and where to trace it.
+- An architecture overview and pages under `docs/flows/` for system behavior, user journeys, and project workflows. Link to the screens, code, tests, or project instructions that support the account.
 - `GLOSSARY.md` for verified or developer-confirmed domain terms.
-- `CODING_STANDARDS.md` for established conventions or confirmed preferences that require judgment. Treat repeated patterns in code as candidates until a documented rule or the developer confirms them. Link to automated checks for existing mechanical rules.
+- `CODING_STANDARDS.md` for established team conventions for the codebase that require judgment. Treat repeated patterns in code as candidates until a documented rule or the developer confirms them. Link to automated checks for existing mechanical rules.
 - `docs/adr/` for confirmed consequential decisions and their rationale. Preserve the distinction between an observed design and a decision whose rationale is known.
 
 Update the page that already owns a topic. Use descriptive relative links between related pages and to relevant source files. On repeat runs, recheck the pages touched by the exploration, repair broken links, and consolidate duplicates when the surviving path preserves useful context. Use low relevance as a reason to review a page and evidence of redundancy or supersession to decide what to retire.

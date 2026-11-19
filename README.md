@@ -1,6 +1,6 @@
 # Project Docs Skills
 
-Portable agent skills and instructions for building and maintaining developer documentation as you work. Install the same skills in any code repository. Each repository grows its own documentation from its code, tests, and decisions confirmed by its developers.
+Portable agent skills and instructions for building and maintaining developer documentation as you work. Install the same skills in any code repository. Each repository grows its own developer knowledge base, covering architecture, code, business vocabulary, user journeys, and project workflows. Code, tests, and confirmed team decisions provide the evidence.
 
 ## Available skills
 
@@ -19,11 +19,13 @@ See the [Codex installation docs](https://developers.openai.com/api/reference/cl
 
 ## Use the skills
 
-### Build an initial map
+### Start or resume a short KT session
 
 > `$project-kt` Map the project.
 
-A bare `$project-kt` starts the same repository-wide discovery. The skill builds or refreshes the linked documentation, investigates gaps in the code, and asks whether to keep or revisit important design choices it finds. Name a component or flow to focus the review.
+A bare `$project-kt` builds the map in short passes. Each round documents what it verifies and asks up to five important questions. After applying your answers and saving where to resume, it asks whether you want another round or want to stop. Choose to continue for another round in the same chat, or resume later. Name a component or flow to focus the review.
+
+> `$project-kt` Continue from the last KT session.
 
 ### Refresh the docs after changes
 
@@ -36,5 +38,11 @@ A bare `$project-kt` starts the same repository-wide discovery. The skill builds
 ## How the documentation grows
 
 The skills follow the target repository's documentation conventions. A repository can start with a short index and a single flow page, then add glossary terms, architecture decisions, and coding standards when there is enough evidence to record them. Relative links connect related pages to each other and to supporting code and tests. Later sessions start from the relevant pages and refresh them as the project evolves.
+
+## How links are maintained
+
+Both skills keep a local per-worktree journal of the Markdown links they see and actually use. A followed link earns one point per invocation when it helps with the work. The score counts usage over the last 90 days. An older link with no recent use becomes a review candidate only when there is evidence that the area is still being worked on. Link repairs and cleanup depend on evidence from the current docs and code.
+
+Story Walkthrough handles this maintenance during regular story work. Project KT can review a wider area. The journal lives in local Git metadata, while Markdown changes can be committed with the rest of the project documentation.
 
 This release focuses on testing Project KT and Story Walkthrough. Future implementation skills can use the same linked documentation to find project conventions, business rules, and the parts of the code affected by a change.

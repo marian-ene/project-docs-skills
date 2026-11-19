@@ -16,14 +16,18 @@ Use the user's language for the conversation. When it is a language other than E
 
 ## Ground the story
 
-- Read the story, acceptance criteria, and constraints supplied by the developer. Identify the affected flow and the outcome the story is meant to achieve.
+- Read the story, acceptance criteria, and constraints supplied by the developer. Identify the affected flow, the user-facing outcome where relevant, and any project workflow it touches.
 - Follow the applicable repo instructions and start from its docs entry point. Open the relevant flow pages, glossary entries, coding standards, or ADRs. Follow their links into code and tests to verify current behavior and constraints. Use focused code search to fill gaps where the docs are sparse.
 - Surface discrepancies that affect the story, with links to the evidence. Keep current behavior, requested behavior, and open decisions distinct.
+
+## Maintain documentation links
+
+Read [link usage and review](references/link-usage.md) when working with project documentation. On every story, record the links you use, check relevant outgoing links on pages you review, and repair verified broken or obsolete links. Review low-use candidates for those pages and flag anything that needs a decision. This workflow works on its own after initial discovery.
 
 ## Clarify decisions with the developer
 
 - Check the repo for answerable facts first. Ask questions in dependency order about behavior, edge cases, scope, or trade-offs that affect the story or how acceptance will be verified. Give your recommended answer and the evidence or trade-off behind it. Group independent questions when that helps the discussion.
-- As decisions settle, update the owning Markdown page if the result is useful beyond this story. Capture confirmed vocabulary, existing behavior verified in code, and durable rationale or constraints. Use [documentation guidance](references/documentation.md) when choosing where to record a new note.
+- As decisions settle, update the owning Markdown page if the result is useful beyond this story. Capture confirmed business vocabulary, user journeys and workflows, observed behavior verified in code or tests, and durable architecture decisions or constraints. Use [documentation guidance](references/documentation.md) when choosing where to record a new note.
 - Keep proposed behavior in the story notes or mark it explicitly as an agreed future design. Document it as current behavior once verified in the implementation. Honor requests for a read-only discussion.
 
 When the story is clear enough to hand off, summarize the agreed scope, clarified acceptance criteria, decisions and rationale, suggested verification, and any remaining blockers. Check links in changed Markdown. The handoff can feed a later spec or ticketing step.
