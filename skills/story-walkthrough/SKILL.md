@@ -12,6 +12,10 @@ Work through one story with the developer until its behavior, boundaries, and ke
 
 Phrase questions, answers, and explanations in plain language for a mid-level developer. Lead with the concrete behavior or decision and explain unfamiliar technical jargon briefly when it matters.
 
+Make each substantive question or request for confirmation understandable on its own, including when it appears in a batch or question picker. Briefly state what you found or what is proposed, where it happens, and what the answer would change. Put that context in the question itself and link to the most relevant source or test, with a line reference when available.
+
+For an API question, name the HTTP method and route, plus the controller action or handler and any service method central to the decision. For other questions, name the relevant screen, workflow step, class, or method. Use verified identifiers and say when a detail is still unknown.
+
 Use the user's language for the conversation. When it is a language other than English, keep project-specific business terms in English. Prefer the English terms used in the project's glossary, docs, or code. Use a clear English equivalent when the project provides no English term, and explain its meaning in the user's language if needed.
 
 ## Ground the story
