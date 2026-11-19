@@ -1,47 +1,38 @@
 # Project Docs Skills
 
-Portable agent skills for learning a codebase and turning a story into an implementation-ready plan.
+Portable agent skills and instructions for building and maintaining developer documentation as you work. Install the same skills in any code repository. Each repository grows its own documentation from its code, tests, and decisions confirmed by its developers.
 
-- [Project KT](skills/project-kt/SKILL.md) studies the repository, builds a map of its architecture and business flows, and maintains the linked documentation as it learns.
-- [Story Walkthrough](skills/story-walkthrough/SKILL.md) uses that documentation and the code to work through one story with the developer. It clarifies acceptance criteria and records settled decisions as they emerge.
+## Available skills
 
-Both skills use the target repository's documentation conventions and keep application code read-only.
+- [Project KT](skills/project-kt/SKILL.md) explores an existing codebase and builds or refreshes its linked documentation. Run it to learn the architecture and business flows, or rerun it after team changes to compare the docs with current behavior. It asks for confirmation before treating a significant change as an accepted rule or decision.
+- [Story Walkthrough](skills/story-walkthrough/SKILL.md) works through one upcoming story with a developer. It uses the relevant docs, code, and tests to clarify scope and acceptance criteria, writes durable findings into the relevant pages, and leaves a handoff for later implementation.
 
-## Install in a project
+Both skills can update documentation. They read application code and configuration to verify their findings.
 
-Copy both folders under `skills/` into `.agents/skills/` at the target repository root. This layout is supported by [Codex](https://developers.openai.com/api/reference/cli) and [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills).
+## Install in any repository
 
-For a local checkout alongside Bullish Beans, run this in PowerShell:
+1. Clone or download this repository.
+2. Copy the complete `skills/project-kt` and `skills/story-walkthrough` directories into `.agents/skills/` at the root of the repository where you want to use them.
+3. Open a new agent session from that repository root. In Codex, invoke `$project-kt` or `$story-walkthrough`. In GitHub Copilot CLI, use `/project-kt` or `/story-walkthrough`. An existing Copilot CLI session can reload skills with `/skills reload`.
 
-~~~powershell
-$source = 'C:\AzDo\project-docs-skills\skills'
-$destination = 'C:\AzDo\bb-monorepo\.agents\skills'
-New-Item -ItemType Directory -Path $destination -Force | Out-Null
-Copy-Item -LiteralPath (Join-Path $source 'project-kt'), (Join-Path $source 'story-walkthrough') -Destination $destination -Recurse -Force
-~~~
+See the [Codex installation docs](https://developers.openai.com/api/reference/cli) and [GitHub Copilot CLI skill docs](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills).
 
-Open a new agent session from the target repo root. In Codex, invoke `$project-kt` or `$story-walkthrough`. In Copilot CLI, include `/project-kt` or `/story-walkthrough` in your prompt. To refresh Copilot CLI in an existing session, use `/skills reload`.
+## Use the skills
 
-## Try the workflow in Bullish Beans
+### Build an initial map
 
-Start by building context for one part of the monorepo:
+> `$project-kt` Map the main components and trace one business flow from its entry point. Verify your findings in code and tests, document what you can establish, and ask me where intent is unclear.
 
-> $project-kt Fă o hartă scurtă a componentelor și urmărește cum împart bb-api și bb-stocks schema SQL. Verifică dovezile și documentează ce ai aflat. Întreabă-mă unde lipsește contextul de business.
+### Refresh the docs after changes
 
-### Sync after the team ships changes
-
-Run Project KT again from the updated checkout. Give it the previous reviewed commit, tag, or a list of changes if you have one. Otherwise, it compares the relevant documentation with current code and tests and reports the areas it checked.
-
-> $project-kt Am ultima versiune din Bullish Beans. Compară documentația despre datele de piață cu implementarea curentă. Arată-mi diferențele și dovezile din cod. Întreabă-mă ce reguli de business sau decizii de arhitectură confirmăm înainte să actualizezi paginile.
-
-When a change is a deviation, keep the intended architecture in the docs and report the implementation difference separately.
+> `$project-kt` Compare the relevant docs with the current code. Use the last reviewed revision if it is available. Show me material differences and confirm intended behavior before updating the docs.
 
 ### Walk through a story
 
-When you have a story, give it to Story Walkthrough:
+> `$story-walkthrough` Review the story, constraints, and acceptance criteria below. Use the existing docs and code to resolve what you can. Ask me about the remaining decisions and update the project docs as we settle them.
 
-> $story-walkthrough Parcurge story-ul de mai jos cu mine. Folosește documentația proiectului, verifică în cod ce poți afla și clarifică pe rând deciziile care afectează criteriile de acceptare.
->
-> Story: [paste story, constraints, and acceptance criteria here]
+## How the documentation grows
 
-The first skill adds useful project knowledge as it discovers it. The second starts from that knowledge, captures durable clarifications in the relevant pages, and leaves a short handoff for a future spec or implementation session.
+The skills follow the target repository's documentation conventions. A repository can start with a short index and a single flow page, then add glossary terms, architecture decisions, and coding standards when there is enough evidence to record them. Relative links connect related pages to each other and to supporting code and tests. Later sessions start from the relevant pages and refresh them as the project evolves.
+
+This release focuses on testing Project KT and Story Walkthrough. Future implementation skills can use the same linked documentation to find project conventions, business rules, and the parts of the code affected by a change.
