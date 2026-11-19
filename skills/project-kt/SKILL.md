@@ -1,6 +1,6 @@
 ---
 name: project-kt
-description: Study an existing codebase and build or refresh its linked developer documentation. Use for initial architecture and business-flow discovery, or to sync glossary, coding standards, and project docs after team changes.
+description: Map a repository and build or refresh its linked developer documentation. Use for project discovery, architecture and business-flow mapping, or documentation sync after team changes. Proactively interview the developer to resolve gaps in intent.
 license: MIT
 ---
 
@@ -8,11 +8,27 @@ license: MIT
 
 Learn enough about the repository to give a developer or another agent a verified route into the code. Keep application code and configuration read-only. Write in the repository's documentation locations and honor a read-only request across the whole repo.
 
-## Discover
+## Choose the scope
 
-1. Read the applicable repository instructions and find the docs entry point. Use existing maps, glossaries, and ADRs to identify what is known and what needs checking. When starting from scratch, survey the top-level components, entry points, and component boundaries before choosing one meaningful business flow to trace in depth.
-2. Follow the requested area or flow through its implementation, tests, and configuration. Record the trigger, business rules, component handoffs, and outcome. Cite the relevant files and name the symbols or test scenarios supporting consequential claims. Keep observed behavior, confirmed business intent, and unresolved assumptions distinct.
-3. Verify what you can in the repo before asking the developer. Ask focused questions when intent, vocabulary, rationale, or an apparent inconsistency cannot be resolved from the evidence. Keep productive discovery moving while those questions remain open. Update the relevant page when an answer settles a point.
+A bare invocation or a broad request to map, investigate, or understand the project starts a repository-wide discovery. Begin from the repository root and cover every major component, including shared modules and external integrations that affect the architecture. A named component or flow narrows the scope. A request to reconcile recent changes uses the sync workflow below.
+
+## Discover and map the project
+
+1. Read the applicable repository instructions and locate the existing docs entry point. Use it to guide discovery. Survey the components and entry points in scope, how they fit together, and the data, contracts, or dependencies they share.
+2. Identify the main business flows and trace representative ones through code, tests, and configuration. Record the trigger, rules, handoffs, and outcome. Link consequential claims to files and name the relevant symbols or test scenarios. In a broad review, give each major component a place in the map and identify which flows have been traced in depth.
+3. Build or refresh the linked Markdown documentation as you go. Create or update a short entry point and an architecture map with the verified relationships. Add flow pages, glossary entries, coding standards, and decisions as the evidence and discussion warrant. Keep visible which findings describe observed behavior, which reflect confirmed intent, and which questions remain open.
+
+## Interview the developer as you go
+
+Initiate the interview yourself. Investigate facts you can verify from repository evidence first. Once you have evidence, ask focused questions about unresolved business rules, vocabulary, ownership, architecture rationale, or behavior that may conflict with the intended design. Show what you found and explain what the answer would change. Offer an interpretation or recommendation when the evidence supports one.
+
+Ask the questions that can be answered now together. Use each answer to update the relevant page and ask any follow-ups it unlocks. Continue independent discovery while questions are open. Keep going until the material questions in scope are resolved or the developer defers them. If you need an answer to establish intent, ask it during the walkthrough and leave the point open in the meantime.
+
+## Confirm important findings
+
+During an initial map as well as later reviews, bring newly discovered or materially changed architectural choices, business rules, and coding conventions to the developer for confirmation. Do this even when their current behavior is clear in code. Group related findings and show how the approach works today, the evidence for it, and why it matters. Ask whether to keep it as an intended direction, revisit it later, or leave the decision open.
+
+Record the verified current behavior where it helps readers understand the code. Record it as an agreed direction only after confirmation. If the developer wants to revisit it, add a follow-up to the repo's existing documentation or to a short follow-up section in the owning page. Capture what should be revisited, why, and a link to the evidence. Mark undecided findings as open and leave implementation for a separate task.
 
 ## Sync after team changes
 

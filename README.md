@@ -21,7 +21,9 @@ See the [Codex installation docs](https://developers.openai.com/api/reference/cl
 
 ### Build an initial map
 
-> `$project-kt` Map the main components and trace one business flow from its entry point. Verify your findings in code and tests, document what you can establish, and ask me where intent is unclear.
+> `$project-kt` Map the project.
+
+A bare `$project-kt` starts the same repository-wide discovery. The skill builds or refreshes the linked documentation, investigates gaps in the code, and asks whether to keep or revisit important design choices it finds. Name a component or flow to focus the review.
 
 ### Refresh the docs after changes
 
