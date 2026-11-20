@@ -61,7 +61,7 @@ If tracking a last-reviewed commit helps repeat this review, record it with the 
 
 ## Maintain documentation links
 
-Read [link usage and review](references/link-usage.md) when working with project documentation. Record links you use and review the relevant links in the areas you explore. Use the same local journal as Story Walkthrough. If a link requires a decision from the developer, include it within the five-question round or carry it to the continuation note.
+Read [link usage and review](references/link-usage.md) when working with project documentation. Record links you use and review the relevant links in the areas you explore. Use the same local journal as Grill Reqs. If a link requires a decision from the developer, include it within the five-question round or carry it to the continuation note.
 
 ## Build and maintain the documentation
 

@@ -1,12 +1,12 @@
 ---
-name: story-walkthrough
-description: Clarify one upcoming story or use case with the developer using existing project docs, code, and tests. Use when given a story, requirements, or acceptance criteria to discuss implementation and capture settled decisions before planning or coding.
+name: grill-reqs
+description: Interview the developer to clarify requirements for one upcoming change. Use project docs, code, and tests to resolve questions about a requirements brief, story, use case, or acceptance criteria and document settled decisions before implementation.
 license: MIT
 ---
 
-# Story Walkthrough
+# Grill Reqs
 
-Work through one story with the developer until its behavior, boundaries, and key implementation decisions are clear. Use the repository's durable documentation as working context. Keep application code and configuration read-only during the walkthrough.
+Interview the developer about the requirements for one change until its behavior, boundaries, and key implementation decisions are clear. Use the repository's durable documentation as working context. Keep application code and configuration read-only during the walkthrough.
 
 ## Communicate with the developer
 
@@ -20,7 +20,7 @@ Use the user's language for the conversation. When it is a language other than E
 
 ## Ground the story
 
-- Read the story, acceptance criteria, and constraints supplied by the developer. Identify the affected flow, the user-facing outcome where relevant, and any project workflow it touches.
+- Start from the requirements, story, or use case supplied by the developer. Use any existing acceptance criteria and constraints to frame the discussion. Identify the affected flow, the user-facing outcome where relevant, and any project workflow it touches.
 - Follow the applicable repo instructions and start from its docs entry point. Open the relevant flow pages, glossary entries, coding standards, or ADRs. Follow their links into code and tests to verify current behavior and constraints. Use focused code search to fill gaps where the docs are sparse.
 - Surface discrepancies that affect the story, with links to the evidence. Keep current behavior, requested behavior, and open decisions distinct.
 

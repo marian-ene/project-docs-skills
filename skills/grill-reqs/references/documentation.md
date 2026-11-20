@@ -1,4 +1,4 @@
-# Documentation during a story walkthrough
+# Documentation during requirements clarification
 
 Follow the target repository's conventions. Update the existing page that owns a durable clarification and use meaningful relative links to related notes and source files.
 

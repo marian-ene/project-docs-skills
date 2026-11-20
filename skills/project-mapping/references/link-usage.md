@@ -33,4 +33,4 @@ For links in scope, read valid journal entries and count distinct invocation IDs
 
 Review link validity and meaning independently of score. Repair a broken or moved target when the replacement is verified. If code or documentation changes make the relationship obsolete, update the link when the correct relationship is clear or raise the discrepancy for confirmation. Use low usage to prioritize review. Keep links that serve a documented purpose, including rare procedures or decisions. Remove or merge a link only when evidence shows it is obsolete or redundant, or the developer confirms the change. For an unresolved candidate, report the source, destination, and reason for review.
 
-Story Walkthrough checks the relevant outgoing links on pages it reviews. Project Mapping can do the same for a broader documentation scope when asked. Existing documentation remains the source of truth about each relationship.
+Grill Reqs checks the relevant outgoing links on pages it reviews. Project Mapping can do the same for a broader documentation scope when asked. Existing documentation remains the source of truth about each relationship.

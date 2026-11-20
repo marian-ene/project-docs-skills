@@ -8,6 +8,6 @@ Record the environment, verification date, objects checked, and scope alongside 
 
 Build the database map incrementally alongside the application flows. In each prioritized round, inspect the relevant tables, foreign keys, constraints, indexes, views, stored procedures, functions, triggers, and temporal or history structures. Trace readers, writers, and ownership to evidence before documenting them. Compare observed schema and definitions with ORM models, migrations, and queries. Record verified behavior, confirmed intent, and discrepancies distinctly. Carry open decisions into the existing five-question rounds and continuation notes.
 
-## Story Walkthrough
+## Grill Reqs
 
 Start with the existing database documentation and recheck only the story's dependencies through MCP. Verify relevant integrity rules, cardinality, soft deletion, transaction boundaries, and indexes against the schema and application code. Treat performance as unverified unless supported by appropriate runtime evidence. Update the page that owns the information and link to it from the story or flow. Reuse the existing database map.

@@ -5,15 +5,18 @@ Portable agent skills and instructions for building and maintaining developer do
 ## Available skills
 
 - [Project Mapping](skills/project-mapping/SKILL.md) explores an existing codebase and builds or refreshes its linked documentation. Run it to learn the architecture and business flows, or rerun it after team changes to compare the docs with current behavior. It asks for confirmation before treating a significant change as an accepted rule or decision.
-- [Story Walkthrough](skills/story-walkthrough/SKILL.md) works through one upcoming story with a developer. It uses the relevant docs, code, and tests to clarify scope and acceptance criteria, writes durable findings into the relevant pages, and leaves a handoff for later implementation.
+- [Grill Reqs](skills/grill-reqs/SKILL.md) works through the requirements for one upcoming change with a developer. It uses the relevant docs, code, and tests to clarify scope and acceptance criteria, writes durable findings into the relevant pages, and leaves a handoff for later implementation.
 
-Both skills can update documentation. They read application code and configuration to verify their findings.
+- [To Spec](skills/to-spec/SKILL.md) turns agreed requirements into a local spec with acceptance criteria, decisions, and verification.
+- [To Tasks](skills/to-tasks/SKILL.md) breaks a spec or settled plan into verifiable tasks with explicit dependencies.
+
+The skills write documentation and planning artifacts. They read application code and configuration to verify their findings.
 
 ## Install in any repository
 
 1. Clone or download this repository.
-2. Copy the complete `skills/project-mapping` and `skills/story-walkthrough` directories into `.agents/skills/` at the root of the repository where you want to use them.
-3. Open a new agent session from that repository root. In Codex, invoke `$project-mapping` or `$story-walkthrough`. In GitHub Copilot CLI, use `/project-mapping` or `/story-walkthrough`. An existing Copilot CLI session can reload skills with `/skills reload`.
+2. Copy the complete directories for the skills you want from `skills/` into `.agents/skills/` at the root of the repository where you want to use them.
+3. Open a new agent session from that repository root. In Codex, invoke the skill by name with a `$` prefix, such as `$to-spec`. In GitHub Copilot CLI, use a `/` prefix, such as `/to-spec`. An existing Copilot CLI session can reload skills with `/skills reload`.
 
 See the [Codex installation docs](https://developers.openai.com/api/reference/cli) and [GitHub Copilot CLI skill docs](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills).
 
@@ -31,9 +34,17 @@ A bare `$project-mapping` builds the map in short passes. Each round documents w
 
 > `$project-mapping` Compare the relevant docs with the current code. Use the last reviewed revision if it is available. Show me material differences and confirm intended behavior before updating the docs.
 
-### Walk through a story
+### Clarify requirements
 
-> `$story-walkthrough` Review the story, constraints, and acceptance criteria below. Use the existing docs and code to resolve what you can. Ask me about the remaining decisions and update the project docs as we settle them.
+> `$grill-reqs` Review the requirements below and any constraints or acceptance criteria I have included. Use the existing docs and code to resolve what you can. Ask me about the remaining decisions and update the project docs as we settle them.
+
+### Capture a spec and split it into tasks
+
+> `$to-spec` Turn the requirements and the decisions we just agreed on into a spec.
+
+> `$to-tasks` Split the spec at `docs/specs/<change>/spec.md` into verifiable tasks with dependencies.
+
+By default, the spec and task files live in the target repository. Follow the project's existing conventions where available.
 
 ## How the documentation grows
 
@@ -43,6 +54,6 @@ The skills follow the target repository's documentation conventions. A repositor
 
 Both skills keep a local per-worktree journal of the Markdown links they see and actually use. A followed link earns one point per invocation when it helps with the work. The score counts usage over the last 90 days. An older link with no recent use becomes a review candidate only when there is evidence that the area is still being worked on. Link repairs and cleanup depend on evidence from the current docs and code.
 
-Story Walkthrough handles this maintenance during regular story work. Project Mapping can review a wider area. The journal lives in local Git metadata, while Markdown changes can be committed with the rest of the project documentation.
+Grill Reqs handles this maintenance during regular story work. Project Mapping can review a wider area. The journal lives in local Git metadata, while Markdown changes can be committed with the rest of the project documentation.
 
-This release focuses on testing Project Mapping and Story Walkthrough. Future implementation skills can use the same linked documentation to find project conventions, business rules, and the parts of the code affected by a change.
+Future implementation skills can use the same linked documentation and task files to find project conventions, business rules, and affected code.
