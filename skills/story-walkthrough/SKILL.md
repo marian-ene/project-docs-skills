@@ -24,6 +24,10 @@ Use the user's language for the conversation. When it is a language other than E
 - Follow the applicable repo instructions and start from its docs entry point. Open the relevant flow pages, glossary entries, coding standards, or ADRs. Follow their links into code and tests to verify current behavior and constraints. Use focused code search to fill gaps where the docs are sparse.
 - Surface discrepancies that affect the story, with links to the evidence. Keep current behavior, requested behavior, and open decisions distinct.
 
+## Investigate the database
+
+When the story depends on database behavior, read [database investigation](references/database-investigation.md). Reuse the existing database docs and use read-only MCP to verify the dependencies that affect the story.
+
 ## Maintain documentation links
 
 Read [link usage and review](references/link-usage.md) when working with project documentation. On every story, record the links you use, check relevant outgoing links on pages you review, and repair verified broken or obsolete links. Review low-use candidates for those pages and flag anything that needs a decision. This workflow works on its own after initial discovery.

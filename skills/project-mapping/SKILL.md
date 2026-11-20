@@ -1,10 +1,10 @@
 ---
-name: project-kt
+name: project-mapping
 description: Map a repository and build or refresh its linked developer documentation. Use for project discovery, architecture and business-flow mapping, or documentation sync after team changes. Proactively interview the developer to resolve gaps in intent.
 license: MIT
 ---
 
-# Project KT
+# Project Mapping
 
 Learn enough about the repository to give a developer or another agent a verified route into the code. Keep application code and configuration read-only. Write in the repository's documentation locations and honor a read-only request across the whole repo.
 
@@ -28,9 +28,13 @@ A bare invocation or a broad request to map, investigate, or understand the proj
 2. Identify the main business flows and user journeys and trace representative ones through the relevant screens, code, tests, or configuration. Record the trigger, rules, handoffs, and outcome. Link consequential claims to files and name the relevant symbols or test scenarios. In a broad review, give each major component a place in the map and identify which flows have been traced in depth.
 3. Build or refresh the linked Markdown documentation as you go. Create or update a short entry point and an architecture map with the verified relationships. Add flow pages, glossary entries, coding standards, and decisions as the evidence and discussion warrant. Keep visible which findings describe observed behavior, which reflect confirmed intent, and which questions remain open.
 
+## Investigate the database
+
+When a flow depends on a database, read [database investigation](references/database-investigation.md). Map the relevant objects and code paths in the current round, using read-only MCP evidence when available.
+
 ## Work in short, resumable sessions
 
-A session is one useful pass over a bounded topic, such as a component boundary, a business flow, or a cluster of recent changes. Start with an existing KT continuation note when it matches the request. On a fresh repository-wide pass, build the high-level map and choose one area to trace. Treat whole-repo coverage as a goal across sessions.
+A session is one useful pass over a bounded topic, such as a component boundary, a business flow, or a cluster of recent changes. Start with an existing mapping continuation note, including a note saved by an earlier KT run, when it matches the request. On a fresh repository-wide pass, build the high-level map and choose one area to trace. Treat whole-repo coverage as a goal across sessions.
 
 1. Investigate the facts you can verify in code, tests, and existing docs. Add or refresh the relevant pages as you learn, including glossary entries, rules, and links. Record verified behavior and keep any unconfirmed intent open. Save this work before handing questions to the developer.
 2. Ask one round of up to five material questions, including confirmations in discovery and sync. Prioritize the questions that most affect the docs. Group related findings, show the evidence, and explain what each answer would change. Ask fewer when that covers the remaining material questions.
@@ -70,4 +74,4 @@ Use the repo's established structure. When there is none, start with a short `do
 
 Update the page that already owns a topic. Use descriptive relative links between related pages and to relevant source files. On repeat runs, recheck the pages touched by the exploration, repair broken links, and consolidate duplicates when the surviving path preserves useful context. Use low relevance as a reason to review a page and evidence of redundancy or supersession to decide what to retire.
 
-Check changed links and report the areas covered, documentation updated, and questions still open. State where a later KT session can continue if the requested scope is broader than the area verified.
+Check changed links and report the areas covered, documentation updated, and questions still open. State where a later mapping session can continue if the requested scope is broader than the area verified.
