@@ -54,6 +54,6 @@ The skills follow the target repository's documentation conventions. A repositor
 
 Both skills keep a local per-worktree journal of the Markdown links they see and actually use. A followed link earns one point per invocation when it helps with the work. The score counts usage over the last 90 days. An older link with no recent use becomes a review candidate only when there is evidence that the area is still being worked on. Link repairs and cleanup depend on evidence from the current docs and code.
 
-Grill Reqs handles this maintenance during regular story work. Project Mapping can review a wider area. The journal lives in local Git metadata, while Markdown changes can be committed with the rest of the project documentation.
+Grill Reqs handles this maintenance during regular story work. Project Mapping can review a wider area. Both skills use `docs/link-usage.json` by default and keep it untracked. When creating this default journal, they import any valid history available in the old journal.
 
 Future implementation skills can use the same linked documentation and task files to find project conventions, business rules, and affected code.
