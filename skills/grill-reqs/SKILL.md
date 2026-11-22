@@ -32,6 +32,12 @@ When the story depends on database behavior, read [database investigation](refer
 
 Read [link usage and review](references/link-usage.md) when working with project documentation. On every story, record the links you use, check relevant outgoing links on pages you review, and repair verified broken or obsolete links. Review low-use candidates for those pages and flag anything that needs a decision. This workflow works on its own after initial discovery.
 
+## Record why a page matters
+
+When creating or updating a linked Markdown documentation page, ensure it has a name, a short description of what it covers, and a `why` that states when to consult it and what decision it informs or mistake it helps prevent. Follow the target repo's metadata conventions. By default, use the page title as its name and put `description` and `why` in YAML frontmatter.
+
+Keep `why` to one concrete sentence grounded in verified behavior or confirmed intent. Add it to existing pages as you edit them, and revise it when the page's purpose changes. If the purpose is unclear, flag it as an open question. Use the `why` to judge whether a linked page is relevant to the current task.
+
 ## Clarify decisions with the developer
 
 - Check the repo for answerable facts first. Ask questions in dependency order about behavior, edge cases, scope, or trade-offs that affect the story or how acceptance will be verified. Give your recommended answer and the evidence or trade-off behind it. Group independent questions when that helps the discussion.

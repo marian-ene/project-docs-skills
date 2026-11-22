@@ -74,4 +74,10 @@ Use the repo's established structure. When there is none, start with a short `do
 
 Update the page that already owns a topic. Use descriptive relative links between related pages and to relevant source files. On repeat runs, recheck the pages touched by the exploration, repair broken links, and consolidate duplicates when the surviving path preserves useful context. Use low relevance as a reason to review a page and evidence of redundancy or supersession to decide what to retire.
 
+### Record why a page matters
+
+When creating or updating a linked Markdown documentation page, ensure it has a name, a short description of what it covers, and a `why` that states when to consult it and what decision it informs or mistake it helps prevent. Follow the target repo's metadata conventions. By default, use the page title as its name and put `description` and `why` in YAML frontmatter.
+
+Keep `why` to one concrete sentence grounded in verified behavior or confirmed intent. Add it to existing pages as you edit them, and revise it when the page's purpose changes. If the purpose is unclear, flag it as an open question. Use the `why` to judge whether a linked page is relevant to the current task.
+
 Check changed links and report the areas covered, documentation updated, and questions still open. State where a later mapping session can continue if the requested scope is broader than the area verified.
