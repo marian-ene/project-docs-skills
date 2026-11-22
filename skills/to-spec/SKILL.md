@@ -20,6 +20,7 @@ Use the project's established location or the path the developer supplies. Other
 
 Write for a developer or model that has the repository and this document, with no access to the conversation. Replace conversational references such as "as discussed" with the actual decision and its source.
 
+- Give the spec a name, a short description of the change, and a one-sentence `why` that states why the change matters. Base it on the agreed problem, outcome, or risk. Link to the relevant project page or ADR when it records the rationale. Follow the target repo's metadata conventions. By default, use the spec title as its name and put `description` and `why` in YAML frontmatter.
 - State the problem, desired outcome, scope, exclusions, and behavior that must be preserved. Identify the affected components, code entry points, and related project decisions with repository links.
 - Describe the required behavior in concrete terms. Where relevant, specify actors, triggers, preconditions, inputs, outputs, permissions, state transitions, failure handling, and edge cases. For contract, schema, or rollout changes, identify affected consumers and compatibility requirements.
 - Give each acceptance criterion a stable ID such as `AC-01`. Describe the setup or input, action, and expected observable result. Link existing tests and name verified test commands or manual verification steps when available.
