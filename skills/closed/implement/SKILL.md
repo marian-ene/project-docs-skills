@@ -40,10 +40,20 @@ Inspect the actual code and staged, unstaged, and relevant untracked changes. If
 3. **Green.** Make the smallest production change that satisfies the criterion through the normal entry point. Rerun the same test and the affected surrounding tests. Repeat for the next behavior. Where a meaningful failing test is unavailable, run the applicable validation or direct acceptance check.
 4. After each task, verify its acceptance checks and run the relevant project checks. After the task set, run the repository's relevant broader checks to catch interactions. Record commands and outcomes, including the observed Red and Green, verification substitutes, environmental blockers, and pre-existing failures that affect confidence.
 
+## Prepare database changes
+
+When the implementation affects persisted data or database objects, inspect the relevant schema, constraints, and dependencies through an available database MCP connection. Identify which environment the connection exposes and keep the inspection read-only. Compare what you observe with the repository's migrations, SQL, models, and test fixtures. If MCP or the required metadata is unavailable, use the repository evidence and record which assumptions still need verification on the target database.
+
+Follow the project's migration and deployment conventions. Prepare the final runnable SQL scripts where the project keeps database changes. If the project generates deployment SQL from migrations, use its generator and identify the migration range. Include schema changes and any required backfill or data changes. Check ordering, compatibility with the deployed application, and what happens if execution fails partway or needs to be retried. Include the scripts and their planned order in the self-review. Where feasible, verify them on an authorized disposable database and record the outcome.
+
 ## Review and resolve findings
 
 1. Load the [Code Review skill](../../open/code-review/SKILL.md) and run it as a self-review. In a flat installation, load `../code-review/SKILL.md` instead. Provide the implementation scope and starting revision, the final diff including staged, unstaged, and relevant new files, the spec and task IDs, and the verification results. Identify pre-existing edits so the review can focus on the implementation and its interactions.
 2. Verify each finding against the actual diff and its evidence. Fix confirmed in-scope defects, unmet criteria, and applicable standards violations in priority order. For a behavior correction, use Red–Green when possible. For a justified behavior-preserving refactor, establish green, make the smallest relevant change, and rerun the affected tests. Treat heuristic suggestions as optional and apply them when they address a concrete problem within scope.
 3. Recheck the fixes and affected code paths against the findings, then rerun the relevant verification. Repeat when a fix introduces a new actionable issue. Finish when the in-scope findings are resolved or a concrete blocker prevents further changes. Report outstanding findings with their impact.
+
+## Hand off database scripts
+
+After implementation and review, give the developer the final runnable script or links to all final scripts in numbered execution order. For each step, state the target database or schema, prerequisites, whether it runs before or after application deployment or another step, and how to verify success before continuing. If a script applies only to a particular environment or starting migration state, state when to use it. Report which scripts were tested and which conditions remain unverified. Leave execution against the target database to the developer unless they separately authorize it.
 
 Summarize completed tasks and acceptance checks, Red–Green evidence or its verification substitute, final checks, and remaining blockers. Update task progress where the project already tracks it locally. Create commits, push, open or update a PR, or change tracker state only with the developer's authorization.
