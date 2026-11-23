@@ -6,7 +6,7 @@ license: MIT
 
 # To Tasks
 
-Turn one agreed change into a task plan that a fresh implementation session can pick up. Keep application code and configuration read-only.
+Turn one agreed change into a task plan that a fresh implementation session can pick up. Keep application code, tests, and configuration read-only.
 
 ## Shape the work
 
@@ -21,11 +21,13 @@ Treat each task file as the implementer's entry point. Include the concrete outc
 
 Give each task a name and a short description of its outcome. Link to the source spec when one exists so the implementer can find the change's `why`. Add a one-sentence `why` to a task only when it explains a task-specific constraint, dependency, or trade-off that affects implementation. Ground it in the agreed requirements or verified evidence.
 
-Write checks with the relevant setup or input, action, and expected result. Name existing test commands or reproducible manual steps when available. State behavior that must be preserved and prerequisite changes or decisions that matter. If work depends on an unresolved decision, mark the task blocked and name the exact decision needed. An implementer should be able to pick up the file with the repository open and use its links without reading the planning conversation.
+Write checks with the relevant setup or input, action, and expected result. Carry forward the verification boundary from the spec and name existing test commands or reproducible manual steps when available. State behavior that must be preserved and prerequisite changes or decisions that matter. If work depends on an unresolved decision, mark the task blocked and name the exact decision needed. An implementer should be able to pick up the file with the repository open and use its links without reading the planning conversation.
 
 ## Save and hand off the breakdown
 
 Use the project's task conventions or a path the developer supplied. By default, create `tasks/` beside a spec in its own change directory. For a flat spec or a conversation without a file, use `docs/specs/<change>/tasks/`. Write one Markdown file per task and a short `tasks/README.md` linking the source and tasks in dependency order. When revising an existing breakdown, preserve stable IDs and recorded progress.
+
+When revising tasks after an implementation pause, retain the handoff link and its historical progress. Update affected task scope, criteria, dependencies, and status from the revised spec. Identify which tasks are ready to resume and which remain paused, were deferred, or were dropped. Label recorded code changes and verification as belonging to the earlier run so a new implementer can check what is still present.
 
 Give the task index a name, a short description, and a one-sentence `why` that explains when to consult the breakdown and what it helps coordinate. Follow the target repo's metadata conventions for the index and task files. By default, use page titles as names and put `description` and any `why` in YAML frontmatter.
 

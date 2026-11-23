@@ -6,7 +6,7 @@ license: MIT
 
 # Project Mapping
 
-Learn enough about the repository to give a developer or another agent a verified route into the code. Keep application code and configuration read-only. Write in the repository's documentation locations and honor a read-only request across the whole repo.
+Learn enough about the repository to give a developer or another agent a verified route into the code. Keep application code, tests, and configuration read-only. Write in the repository's documentation locations and honor a read-only request across the whole repo.
 
 ## Communicate with the developer
 

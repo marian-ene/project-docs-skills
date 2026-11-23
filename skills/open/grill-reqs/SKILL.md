@@ -6,7 +6,7 @@ license: MIT
 
 # Grill Reqs
 
-Interview the developer about the requirements for one change until its behavior, boundaries, and key implementation decisions are clear. Use the repository's durable documentation as working context. Keep application code and configuration read-only during the walkthrough.
+Interview the developer about the requirements for one change until its behavior, boundaries, and key implementation decisions are clear. Use the repository's durable documentation as working context. Keep application code, tests, and configuration read-only during the walkthrough.
 
 ## Communicate with the developer
 
@@ -21,6 +21,7 @@ Use the user's language for the conversation. When it is a language other than E
 ## Ground the story
 
 - Start from the requirements, story, or use case supplied by the developer. Use any existing acceptance criteria and constraints to frame the discussion. Identify the affected flow, the user-facing outcome where relevant, and any project workflow it touches.
+- When the developer brings a paused implementation handoff, read the task, spec, evidence, and the recorded question. Treat any partial code as work in progress. Clarify whether to retain the agreed scope, revise it, defer part of it, or drop the change. Record the developer's decision and what it changes for To Spec and To Tasks.
 - Follow the applicable repo instructions and start from its docs entry point. Open the relevant flow pages, glossary entries, coding standards, or ADRs. Follow their links into code and tests to verify current behavior and constraints. Use focused code search to fill gaps where the docs are sparse.
 - Surface discrepancies that affect the story, with links to the evidence. Keep current behavior, requested behavior, and open decisions distinct.
 
