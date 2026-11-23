@@ -15,23 +15,31 @@ This is the closed skill. It owns edits to application code, tests, and configur
 2. Read the applicable repository instructions, linked architecture decisions, coding standards, existing code, and tests. Capture the requested behavior, constraints, preserved behavior, and planned verification. Reuse the existing verification boundaries named by the spec or task. When choosing a routine boundary, use a supported entry point and the project's established tests.
 3. Record the starting revision and inspect the staged and unstaged diffs and relevant untracked files before editing. For any affected files with pre-existing edits, retain enough of their initial contents to identify your own changes in review. Preserve unrelated work. Work through ready tasks in dependency order. Treat a recorded prerequisite as satisfied when its required behavior is present and verified. Carry forward open decisions that block work, and continue independent tasks when possible.
 
+## Check for a required database scaffold
+
+Before editing a task that depends on database objects or persisted data, inspect the relevant schema, constraints, and dependencies through an available SQL MCP connection. Identify the environment and keep the inspection read-only. Compare the relevant database definitions with the checked-out models, mappings, migrations, and SQL. Repeat the check if you encounter another relevant database dependency during implementation. If MCP or the required metadata is unavailable, use repository evidence and report what remains unverified.
+
+If the task needs schema already present in the intended database and the repository's database-first models or mappings need to be regenerated to match it, stop the entire implementation run as soon as you confirm the mismatch. Leave any partial edits in place. Record the database, affected objects and generated files, and the differences that require scaffolding. Give the developer the repository's scaffold instructions if verified, and ask them to run the scaffold before invoking Implement again. Leave scaffold execution to the developer. Pending migrations that introduce schema still to be deployed belong in the database script workflow.
+
 ## Stop for a major scope change
 
 If discovery, implementation, or review shows that delivering the agreed outcome would require a material change to product behavior, a public contract, data handling, rollout, or agreed exclusions, stop the entire implementation run before making further code, test, or configuration edits. Leave the worktree as it is, including any incomplete changes. A larger diff or a routine technical choice within the agreed scope can proceed.
 
-Record the pause in the active task or in the spec if there is no task file. If neither exists locally, use the project's handoff location or `docs/specs/<change>/implementation-handoff.md`. Use the project's status convention or **Paused pending scope decision**. Include:
+## Record a pause
 
-- The spec, task, and acceptance criterion IDs or links, and the exact decision needed.
-- The discrepancy found in code, tests, or review, with evidence and the effect on scope. Note the options and their consequences where known, including deferring or dropping the change.
+Record the pause in the active task or in the spec if there is no task file. If neither exists locally, use the project's handoff location or `docs/specs/<change>/implementation-handoff.md`. Use the project's status convention or **Paused pending scaffold** or **Paused pending scope decision**, as applicable. Include:
+
+- The spec, task, and acceptance criterion IDs or links, plus the exact prerequisite or decision needed.
+- The discrepancy found in the database, code, tests, or review, with evidence and the effect on the task. For a scope decision, note the options and their consequences where known, including deferring or dropping the change.
 - The branch or worktree and starting revision if available, known partial edits and affected files, checks run and their results, and remaining work. Mark incomplete work explicitly.
 
-Return the handoff path and a concise summary to the developer. End the implementation run so the developer can choose whether to take the handoff to `$grill-reqs`. Ordinary task blockers can still leave independent tasks ready to run.
+Return the handoff path and a concise summary to the developer, then end the implementation run. For a scope decision, the developer can take the handoff to `$grill-reqs`. For a scaffold pause, the developer can run the scaffold and invoke Implement again with the same task or task index. Ordinary task blockers can still leave independent tasks ready to run.
 
-## Resume after clarification
+## Resume a paused implementation
 
-When asked to resume a paused implementation, read the updated spec, tasks, and any handoff they contain or link to before editing. If the scope decision is still pending, return the handoff and end the run. If the revised plan defers or drops the requested task, report that disposition and end the run.
+When asked to resume a paused implementation, read the current spec, tasks, and any handoff they contain or link to before editing. After a scaffold pause, compare the current generated files with the schema evidence for the recorded objects. Refresh that evidence through MCP when available. If you cannot verify that the required mappings now match, return the handoff and end the run. For a scope pause, return the handoff and end the run if the decision is still pending. If the revised plan defers or drops the requested task, report that disposition and end the run.
 
-Inspect the actual code and staged, unstaged, and relevant untracked changes. If partial work is present, check it against the revised acceptance criteria, reuse applicable changes, and rework what the new scope requires while preserving unrelated edits. If the developer undid the partial work or the checkout has none, implement the revised task from the current code. Treat recorded progress and prior test results as historical evidence and verify the current checkout. Include retained partial edits from the same task in the final review.
+Inspect the actual code and staged, unstaged, and relevant untracked changes. If partial work is present, check it against the current acceptance criteria and generated mappings, reuse applicable changes, and adapt them as needed while preserving the scaffold output and unrelated edits. If the developer undid the partial work or the checkout has none, implement the task from the current code. Treat recorded progress and prior test results as historical evidence and verify the current checkout. Include retained partial edits from the same task in the final review.
 
 ## Build and verify
 
@@ -41,8 +49,6 @@ Inspect the actual code and staged, unstaged, and relevant untracked changes. If
 4. After each task, verify its acceptance checks and run the relevant project checks. After the task set, run the repository's relevant broader checks to catch interactions. Record commands and outcomes, including the observed Red and Green, verification substitutes, environmental blockers, and pre-existing failures that affect confidence.
 
 ## Prepare database changes
-
-When the implementation affects persisted data or database objects, inspect the relevant schema, constraints, and dependencies through an available database MCP connection. Identify which environment the connection exposes and keep the inspection read-only. Compare what you observe with the repository's migrations, SQL, models, and test fixtures. If MCP or the required metadata is unavailable, use the repository evidence and record which assumptions still need verification on the target database.
 
 Follow the project's migration and deployment conventions. Prepare the final runnable SQL scripts where the project keeps database changes. If the project generates deployment SQL from migrations, use its generator and identify the migration range. Include schema changes and any required backfill or data changes. Check ordering, compatibility with the deployed application, and what happens if execution fails partway or needs to be retried. Include the scripts and their planned order in the self-review. Where feasible, verify them on an authorized disposable database and record the outcome.
 
