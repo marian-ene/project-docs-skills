@@ -41,6 +41,10 @@ When asked to resume a paused implementation, read the current spec, tasks, and 
 
 Inspect the actual code and staged, unstaged, and relevant untracked changes. If partial work is present, check it against the current acceptance criteria and generated mappings, reuse applicable changes, and adapt them as needed while preserving the scaffold output and unrelated edits. If the developer undid the partial work or the checkout has none, implement the task from the current code. Treat recorded progress and prior test results as historical evidence and verify the current checkout. Include retained partial edits from the same task in the final review.
 
+## Check for Angular 21+ UI work
+
+Before editing UI code, check whether the affected UI uses Angular and determine its major version from `@angular/core` in the relevant package manifest and lockfile, when available. Check the package that owns the UI, not an unrelated package in the same workspace. If the affected UI uses Angular 21 or later, load [Angular 21+ UI practices](references/angular-ui-practices.md) and apply them to the changed code. Skip this guide for non-UI work, other frameworks, and older Angular versions. If the version cannot be confirmed from repository evidence, do not assume the guide applies.
+
 ## Build and verify
 
 1. Before editing behavior, load the [TDD planning skill](../../open/tdd/SKILL.md). In a flat installation, load `../tdd/SKILL.md` instead. Look for a test plan in the task or spec's verification section, a linked file, or `test-plan.md` beside the spec. Use the plan or the TDD planning guidance to identify the next observable behavior and its verification boundary.
@@ -54,7 +58,7 @@ Follow the project's migration and deployment conventions. Prepare the final run
 
 ## Review and resolve findings
 
-1. Load the [Code Review skill](../../open/code-review/SKILL.md) and run it as a self-review. In a flat installation, load `../code-review/SKILL.md` instead. Provide the implementation scope and starting revision, the final diff including staged, unstaged, and relevant new files, the spec and task IDs, and the verification results. Identify pre-existing edits so the review can focus on the implementation and its interactions.
+1. Load the [Code Review skill](../../open/code-review/SKILL.md) and run it as a self-review. In a flat installation, load `../code-review/SKILL.md` instead. Provide the implementation scope and starting revision, the final diff including staged, unstaged, and relevant new files, the spec and task IDs, and the verification results. Identify pre-existing edits so the review can focus on the implementation and its interactions. When the Angular 21+ UI guide applies, include it in the review criteria for the affected UI changes.
 2. Verify each finding against the actual diff and its evidence. Fix confirmed in-scope defects, unmet criteria, and applicable standards violations in priority order. For a behavior correction, use Red–Green when possible. For a justified behavior-preserving refactor, establish green, make the smallest relevant change, and rerun the affected tests. Treat heuristic suggestions as optional and apply them when they address a concrete problem within scope.
 3. Recheck the fixes and affected code paths against the findings, then rerun the relevant verification. Repeat when a fix introduces a new actionable issue. Finish when the in-scope findings are resolved or a concrete blocker prevents further changes. Report outstanding findings with their impact.
 
