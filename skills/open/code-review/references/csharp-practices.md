@@ -6,9 +6,16 @@ Apply these defaults when implementing or reviewing C# code in scope. Follow agr
 
 - Choose the simplest implementation that preserves correctness, performance, and architectural boundaries. Use explicit control flow and domain-specific names, including in lambdas. Spell out `cancellationToken`; avoid abbreviations such as `ct` and `ctx`.
 - Use file-scoped namespaces where supported, with `using` directives outside the namespace. Inject dependencies through explicit constructors into `private readonly` fields rather than using primary constructors. Use braces even for single-statement control flow.
+- Prefer one class per file. Name each file after its class and give each class a separate file even when several classes support the same feature.
 - Prefer `var` for locals unless an explicit type is necessary for correctness or clarity. Prefer collection expressions such as `[]` where the language version and target type support them. Prefer `IReadOnlyList<T>` or `IReadOnlyDictionary<TKey, TValue>` when callers only read; keep mutable collections internally as needed.
 - Separate logical phases, substantial queries, awaited results, and mapping blocks with one blank line. Leave one blank line after a completed `if`, `switch`, `for`, or `foreach` when another statement follows; keep `else` with its `if`. Comment non-obvious intent, not the code's mechanics. Do not add routine XML docs or leave TODO comments.
 - Keep production validation and error messages in the owning module's `Constants/ErrorMessages.cs` and other application strings or format templates in `Constants/Strings.cs` or a clearly named equivalent. Reuse existing constants, preserve localization and contract values, and use `nameof` for CLR member names and `string.Empty` for an empty string.
+
+## SOLID and design patterns
+
+- Apply SOLID principles. Give each class one reason to change, keep contracts focused on what callers need, preserve those contracts across implementations, and make business logic depend on abstractions at boundaries. Use stable extension points where behavior is expected to vary.
+- Prefer the Strategy pattern when substantial conditional branches select among interchangeable business behaviors. Give each variant a focused implementation of a shared contract. When a class has many methods that implement separate responsibilities, split those responsibilities into focused classes.
+- Prefer the Factory pattern when selecting or constructing an implementation requires shared or substantial logic. Use simple conditionals for straightforward decisions and direct construction for straightforward creation.
 
 ## Backend boundaries and vertical slices
 
