@@ -43,7 +43,11 @@ Inspect the actual code and staged, unstaged, and relevant untracked changes. If
 
 ## Check for Angular 21+ UI work
 
-Before editing UI code, check whether the affected UI uses Angular and determine its major version from `@angular/core` in the relevant package manifest and lockfile, when available. Check the package that owns the UI, not an unrelated package in the same workspace. If the affected UI uses Angular 21 or later, load [Angular 21+ UI practices](references/angular-ui-practices.md) and apply them to the changed code. Skip this guide for non-UI work, other frameworks, and older Angular versions. If the version cannot be confirmed from repository evidence, do not assume the guide applies.
+Before editing UI code, check whether the affected UI uses Angular and determine its major version from `@angular/core` in the relevant package manifest and lockfile, when available. Check the package that owns the UI, not an unrelated package in the same workspace. If the affected UI uses Angular 21 or later, load [Angular 21+ UI practices](../../open/code-review/references/angular-ui-practices.md) and apply them to the changed code. In a flat installation, load `../code-review/references/angular-ui-practices.md` instead. Skip this guide for non-UI work, other frameworks, and older Angular versions. If the version cannot be confirmed from repository evidence, do not assume the guide applies.
+
+## Check for C# work
+
+Before editing affected C# code, load [C# implementation practices](../../open/code-review/references/csharp-practices.md). In a flat installation, load `../code-review/references/csharp-practices.md` instead. Check the owning project's configuration before using version-specific syntax or APIs. Apply the general C# practices to changed code and the architecture and integration practices only to the backend patterns and technologies in scope. For mixed Angular and C# work, load both guides when applicable.
 
 ## Build and verify
 
@@ -58,7 +62,7 @@ Follow the project's migration and deployment conventions. Prepare the final run
 
 ## Review and resolve findings
 
-1. Load the [Code Review skill](../../open/code-review/SKILL.md) and run it as a self-review. In a flat installation, load `../code-review/SKILL.md` instead. Provide the implementation scope and starting revision, the final diff including staged, unstaged, and relevant new files, the spec and task IDs, and the verification results. Identify pre-existing edits so the review can focus on the implementation and its interactions. When the Angular 21+ UI guide applies, include it in the review criteria for the affected UI changes.
+1. Load the [Code Review skill](../../open/code-review/SKILL.md) and run it as a self-review. In a flat installation, load `../code-review/SKILL.md` instead. Provide the implementation scope and starting revision, the final diff including staged, unstaged, and relevant new files, the spec and task IDs, and the verification results. Identify pre-existing edits so the review can focus on the implementation and its interactions. Include each applicable language or framework guide in the review criteria for the affected changes.
 2. Verify each finding against the actual diff and its evidence. Fix confirmed in-scope defects, unmet criteria, and applicable standards violations in priority order. For a behavior correction, use Red–Green when possible. For a justified behavior-preserving refactor, establish green, make the smallest relevant change, and rerun the affected tests. Treat heuristic suggestions as optional and apply them when they address a concrete problem within scope.
 3. Recheck the fixes and affected code paths against the findings, then rerun the relevant verification. Repeat when a fix introduces a new actionable issue. Finish when the in-scope findings are resolved or a concrete blocker prevents further changes. Report outstanding findings with their impact.
 

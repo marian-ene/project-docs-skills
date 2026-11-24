@@ -1,6 +1,6 @@
 # Angular 21+ UI practices
 
-Apply these defaults to Angular UI code in scope. Follow agreed team standards and established patterns. Confirm a departure before introducing a new pattern; do not refactor unrelated code or change workspace-wide settings just to adopt this guide.
+Apply these defaults when implementing or reviewing Angular UI code in scope. Follow agreed team standards and established patterns. Confirm a departure before introducing a new pattern; do not refactor unrelated code or change workspace-wide settings just to adopt this guide.
 
 ## Scope and readability
 
