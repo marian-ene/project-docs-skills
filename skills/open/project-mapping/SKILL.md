@@ -24,7 +24,7 @@ A bare invocation or a broad request to map, investigate, or understand the proj
 
 ## Discover and map the project
 
-1. Read the applicable repository instructions and locate the existing docs entry point. Use it to guide discovery. Survey the components and entry points in scope, how they fit together, and the data, contracts, or dependencies they share.
+1. Read the applicable repository instructions and start from `docs/brain/README.md` or the existing docs entry point if the project has yet to adopt this layout. Survey the components and entry points in scope, how they fit together, and the data, contracts, or dependencies they share.
 2. Identify the main business flows and user journeys and trace representative ones through the relevant screens, code, tests, or configuration. Record the trigger, rules, handoffs, and outcome. Link consequential claims to files and name the relevant symbols or test scenarios. In a broad review, give each major component a place in the map and identify which flows have been traced in depth.
 3. Build or refresh the linked Markdown documentation as you go. Create or update a short entry point and an architecture map with the verified relationships. Add flow pages, glossary entries, coding standards, and decisions as the evidence and discussion warrant. Keep visible which findings describe observed behavior, which reflect confirmed intent, and which questions remain open.
 
@@ -65,12 +65,14 @@ Read [link usage and review](references/link-usage.md) when working with project
 
 ## Build and maintain the documentation
 
-Use the repo's established structure. When there is none, start with a short `docs/README.md` linking to the first useful page. Add pages as evidence and scope warrant:
+Keep the linked project documentation in `docs/brain/`. Start with a short `docs/brain/README.md` linking to the first useful page. Add pages as evidence and scope warrant:
 
-- An architecture overview and pages under `docs/flows/` for system behavior, user journeys, and project workflows. Link to the screens, code, tests, or project instructions that support the account.
-- `GLOSSARY.md` for verified or developer-confirmed domain terms.
-- `CODING_STANDARDS.md` for established team conventions for the codebase that require judgment. Treat repeated patterns in code as candidates until a documented rule or the developer confirms them. Link to automated checks for existing mechanical rules.
-- `docs/adr/` for confirmed consequential decisions and their rationale. Preserve the distinction between an observed design and a decision whose rationale is known.
+- An architecture overview and pages under `docs/brain/flows/` for system behavior, user journeys, and project workflows. Link to the screens, code, tests, or project instructions that support the account.
+- `docs/brain/GLOSSARY.md` for verified or developer-confirmed domain terms.
+- `docs/brain/CODING_STANDARDS.md` for established team conventions for the codebase that require judgment. Treat repeated patterns in code as candidates until a documented rule or the developer confirms them. Link to automated checks for existing mechanical rules.
+- `docs/brain/adr/` for confirmed consequential decisions and their rationale. Preserve the distinction between an observed design and a decision whose rationale is known.
+
+Use `docs/stories/<spec-name>/` to locate specs and tasks that provide context for a page. Save requested Draw.io files in `docs/diagrams/` and link to them from the relevant project or story pages.
 
 Update the page that already owns a topic. Use descriptive relative links between related pages and to relevant source files. On repeat runs, recheck the pages touched by the exploration, repair broken links, and consolidate duplicates when the surviving path preserves useful context. Use low relevance as a reason to review a page and evidence of redundancy or supersession to decide what to retire.
 

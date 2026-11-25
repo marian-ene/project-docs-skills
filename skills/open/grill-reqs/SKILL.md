@@ -22,7 +22,7 @@ Use the user's language for the conversation. When it is a language other than E
 
 - Start from the requirements, story, or use case supplied by the developer. Use any existing acceptance criteria and constraints to frame the discussion. Identify the affected flow, the user-facing outcome where relevant, and any project workflow it touches.
 - When the developer brings a paused implementation handoff, read the task, spec, evidence, and the recorded question. Treat any partial code as work in progress. Clarify whether to retain the agreed scope, revise it, defer part of it, or drop the change. Record the developer's decision and what it changes for To Spec and To Tasks.
-- Follow the applicable repo instructions and start from its docs entry point. Open the relevant flow pages, glossary entries, coding standards, or ADRs. Follow their links into code and tests to verify current behavior and constraints. Use focused code search to fill gaps where the docs are sparse.
+- Follow the applicable repo instructions and start from `docs/brain/README.md` or the existing docs entry point if the project has yet to adopt this layout. Open the relevant flow pages, glossary entries, coding standards, or ADRs. Follow their links into code and tests to verify current behavior and constraints. Use focused code search to fill gaps where the docs are sparse.
 - Surface discrepancies that affect the story, with links to the evidence. Keep current behavior, requested behavior, and open decisions distinct.
 
 ## Investigate the database
@@ -45,4 +45,4 @@ Keep `why` to one concrete sentence grounded in verified behavior or confirmed i
 - As decisions settle, update the owning Markdown page if the result is useful beyond this story. Capture confirmed business vocabulary, user journeys and workflows, observed behavior verified in code or tests, and durable architecture decisions or constraints. Use [documentation guidance](references/documentation.md) when choosing where to record a new note.
 - Keep proposed behavior in the story notes or mark it explicitly as an agreed future design. Document it as current behavior once verified in the implementation. Honor requests for a read-only discussion.
 
-When the story is clear enough to hand off, summarize the agreed scope, clarified acceptance criteria, decisions and rationale, suggested verification, and any remaining blockers. Check links in changed Markdown. The handoff can feed a later spec or ticketing step.
+When the story is clear enough to hand off, summarize the agreed scope, clarified acceptance criteria, decisions and rationale, suggested verification, and any remaining blockers. Check links in changed Markdown. Pass the existing story folder path if there is one. To Spec can use the handoff to write `docs/stories/<spec-name>/spec.md`, and To Tasks can write the breakdown under `tasks/` in the same folder.

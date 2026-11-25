@@ -7,7 +7,7 @@ disable-model-invocation: true
 
 # Test-Driven Development Planning
 
-Keep application code, test files, and configuration read-only. Read the acceptance criteria or bug report, applicable project instructions, and nearby code and tests. Prepare one Red–Green cycle per observable behavior for the implementer.
+Keep application code, test files, and configuration read-only. Read the acceptance criteria in the relevant `docs/stories/` spec or task, or use the supplied bug report. Read applicable project instructions, verification guidance in `docs/brain/`, and nearby code and tests. Prepare one Red–Green cycle per observable behavior for the implementer.
 
 ## Choose a test boundary
 
@@ -24,4 +24,4 @@ For a change without a meaningful failing test, document the applicable validati
 
 ## Hand off the test plan
 
-When invoked by Implement, return the focused plan to the caller. For a standalone request, use the requested documentation path or add it to the relevant spec or task's verification section. When there is no existing spec or task, default to `docs/specs/<change>/test-plan.md`. Honor a no-write request by returning the plan in the conversation.
+When invoked by Implement, return the focused plan to the caller. For a standalone request, use the requested documentation path or add it to the relevant spec or task's verification section. When there is no existing spec or task, use `docs/stories/<spec-name>/test-plan.md`. Reuse an existing story folder or derive the folder name from the change name in kebab-case. Honor a no-write request by returning the plan in the conversation.

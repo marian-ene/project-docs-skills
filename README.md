@@ -51,13 +51,13 @@ A bare `$project-mapping` builds the map in short passes. Each round documents w
 
 > `$to-spec` Turn the requirements and the decisions we just agreed on into a spec.
 
-> `$to-tasks` Split the spec at `docs/specs/<change>/spec.md` into verifiable tasks with dependencies.
+> `$to-tasks` Split the spec at `docs/stories/<spec-name>/spec.md` into verifiable tasks with dependencies.
 
-By default, the spec and task files live in the target repository. Follow the project's existing conventions where available.
+The spec and its tasks share a story folder in the target repository. Reuse that folder when revising the same story.
 
 ### Implement a task or spec
 
-> `$implement` Implement the tasks listed in `docs/specs/<change>/tasks/README.md`.
+> `$implement` Implement the tasks listed in `docs/stories/<spec-name>/tasks/README.md`.
 
 Pass a single task file to work on that task. Implement uses the TDD plan or guidance, executes Red–Green itself, and calls Code Review on the resulting diff, including uncommitted changes. It handles justified refactoring in response to findings and reruns the affected checks.
 
@@ -73,16 +73,36 @@ On resume, Implement checks the actual worktree. It verifies and reuses partial 
 
 > `$code-review` Review PR #123 and give me the findings in priority order.
 
-> `$code-review` Review my staged and unstaged changes against `docs/specs/<change>/spec.md`.
+> `$code-review` Review my staged and unstaged changes against `docs/stories/<spec-name>/spec.md`.
 
 Code Review checks the applicable Angular 21+ UI and C# practices in standalone reviews as well as implementation self-reviews.
 
 ## How the documentation grows
 
-The skills follow the target repository's documentation conventions. A repository can start with a short index and a single flow page, then add glossary terms, architecture decisions, and coding standards when there is enough evidence to record them. Relative links connect related pages to each other and to supporting code and tests. Later sessions start from the relevant pages and refresh them as the project evolves.
+```text
+docs/
+  brain/
+    README.md
+    flows/
+    adr/
+  stories/
+    <spec-name>/
+      spec.md
+      tasks/
+        README.md
+        <task-id>.md
+  diagrams/
+    <diagram-name>.drawio
+```
+
+- `docs/brain/` holds the linked project documentation. Project Mapping builds it from a short index and adds architecture, flows, glossary terms, coding standards, and decisions as evidence warrants. Grill Reqs updates the pages that own durable findings.
+- `docs/stories/` holds planning and implementation artifacts for individual changes. To Spec uses the spec title to choose a stable kebab-case folder name. To Tasks writes the task index and task files under `tasks/` in that folder.
+- `docs/diagrams/` holds requested Draw.io diagrams, including diagrams linked from a project page, spec, or task.
+
+Create folders as needed. Use relative links between project pages, story artifacts, diagrams, and supporting code and tests. When reorganizing existing docs, update incoming and outgoing links to the moved files.
 
 ## How links are maintained
 
 Project Mapping and Grill Reqs keep a local per-worktree journal of the Markdown links they see and actually use. A followed link earns one point per invocation when it helps with the work. The score counts usage over the last 90 days. An older link with no recent use becomes a review candidate only when there is evidence that the area is still being worked on. Link repairs and cleanup depend on evidence from the current docs and code.
 
-Grill Reqs handles this maintenance during regular story work. Project Mapping can review a wider area. Both skills use `docs/link-usage.json` by default and keep it untracked. When creating this default journal, they import any valid history available in the old journal.
+Grill Reqs handles this maintenance during regular story work. Project Mapping can review a wider area. Both skills use `docs/brain/link-usage.json` by default and keep it untracked. When creating this journal, they import valid history from prior journal locations.

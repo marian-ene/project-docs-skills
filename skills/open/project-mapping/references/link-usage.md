@@ -4,11 +4,11 @@ Both skills use this format. It works with either skill installed by itself.
 
 ## Choose the journal
 
-Use `docs/link-usage.json` relative to the target repository root. If the active workspace instructions specify a journal inside that workspace's `docs/` directory, use the configured file and preserve its format and history. Resolve a relative override from the workspace that owns the configuration. Check that the resolved journal path stays inside `docs/` and outside any separate child checkout.
+Use `docs/brain/link-usage.json` relative to the target repository root. If the active workspace instructions specify a journal inside that workspace's `docs/` directory, use the configured file and preserve its format and history. Resolve a relative override from the workspace that owns the configuration. Check that the resolved journal path stays inside `docs/` and outside any separate child checkout.
 
 Create the parent directory and journal on the first write. Keep the journal local and untracked. If an override is outside `docs/`, or the selected journal cannot be read or written safely, report the limitation and continue verifying links within scope. Honor read-only requests by keeping observations in the conversation.
 
-When initializing the default journal, look for prior records using `git rev-parse --path-format=absolute --git-path project-docs-usage/v1` from the target repository root. If the legacy directory is available, import valid UUID-named JSON records into `entries`, using the filename stem as `id` and retaining `startedAt`, `seen`, and `used`. Merge by ID. Treat the legacy directory as read-only. If Git or legacy history is unavailable, start with the observations from this invocation.
+When initializing the default journal, import valid version 1 entries from `docs/link-usage.json` if it exists. Also check for older records using `git rev-parse --path-format=absolute --git-path project-docs-usage/v1` from the target repository root. Import valid UUID-named JSON records using the filename stem as `id` and retaining `startedAt`, `seen`, and `used`. Merge by ID, preserving unique observed edges and their timestamps. Treat both legacy locations as read-only. Continue with available history if either source is missing.
 
 ## Record one entry per invocation
 
@@ -23,8 +23,8 @@ Use a version 1 JSON object with an `entries` array by default. Add or update on
     {
       "id": "a3c4b8e2-7d11-4f26-8a9d-13b715d11e62",
       "startedAt": "2026-01-15T09:00:00Z",
-      "seen": [["docs/flows/portfolio.md", "GLOSSARY.md"]],
-      "used": [["docs/flows/portfolio.md", "GLOSSARY.md"]]
+      "seen": [["docs/brain/flows/portfolio.md", "docs/brain/GLOSSARY.md"]],
+      "used": [["docs/brain/flows/portfolio.md", "docs/brain/GLOSSARY.md"]]
     }
   ]
 }

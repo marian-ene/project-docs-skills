@@ -11,8 +11,8 @@ This is the closed skill. It owns edits to application code, tests, and configur
 
 ## Establish scope
 
-1. Resolve the supplied task, spec, task index, or issue reference. For an issue, use the repository's tracker workflow to read it and identify it by title. For a spec, read its task index if available. For a task, follow its links to the spec, acceptance criteria, and prerequisites. A single task scopes the work to that task. A spec or task index scopes it to the applicable task set.
-2. Read the applicable repository instructions, linked architecture decisions, coding standards, existing code, and tests. Capture the requested behavior, constraints, preserved behavior, and planned verification. Reuse the existing verification boundaries named by the spec or task. When choosing a routine boundary, use a supported entry point and the project's established tests.
+1. Resolve the supplied task, spec, task index, or issue reference. Look in `docs/stories/` for a named story. For an issue, use the repository's tracker workflow to read it and identify it by title. For a spec, read `tasks/README.md` in the same story folder if available. For a task, follow its links to the spec, acceptance criteria, and prerequisites. A single task scopes the work to that task. A spec or task index scopes it to the applicable task set.
+2. Read the applicable repository instructions, linked architecture decisions and coding standards in `docs/brain/`, existing code, and tests. Capture the requested behavior, constraints, preserved behavior, and planned verification. Reuse the existing verification boundaries named by the spec or task. When choosing a routine boundary, use a supported entry point and the project's established tests.
 3. Record the starting revision and inspect the staged and unstaged diffs and relevant untracked files before editing. For any affected files with pre-existing edits, retain enough of their initial contents to identify your own changes in review. Preserve unrelated work. Work through ready tasks in dependency order. Treat a recorded prerequisite as satisfied when its required behavior is present and verified. Carry forward open decisions that block work, and continue independent tasks when possible.
 
 ## Check for a required database scaffold
@@ -27,7 +27,7 @@ If discovery, implementation, or review shows that delivering the agreed outcome
 
 ## Record a pause
 
-Record the pause in the active task or in the spec if there is no task file. If neither exists locally, use the project's handoff location or `docs/specs/<change>/implementation-handoff.md`. Use the project's status convention or **Paused pending scaffold** or **Paused pending scope decision**, as applicable. Include:
+Record the pause in the active task or in the spec if there is no task file. If neither exists locally, use `docs/stories/<spec-name>/implementation-handoff.md` and reuse the story folder if it already exists. If there is no spec title, derive the folder name from the change name in kebab-case. Use the project's status convention or **Paused pending scaffold** or **Paused pending scope decision**, as applicable. Include:
 
 - The spec, task, and acceptance criterion IDs or links, plus the exact prerequisite or decision needed.
 - The discrepancy found in the database, code, tests, or review, with evidence and the effect on the task. For a scope decision, note the options and their consequences where known, including deferring or dropping the change.

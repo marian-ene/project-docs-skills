@@ -10,7 +10,7 @@ Turn one agreed change into a task plan that a fresh implementation session can 
 
 ## Shape the work
 
-- Start from the supplied spec, plan, or settled conversation. Follow the relevant project docs and ADRs and inspect code or tests where they inform scope, sequencing, or verification. Carry forward unresolved decisions and identify which tasks they block.
+- Start from the supplied spec, plan, or settled conversation. Look for the existing story folder, spec, or handoff for the change in `docs/stories/`. Follow the relevant project docs and ADRs in `docs/brain/` and inspect code or tests where they inform scope, sequencing, or verification. Carry forward unresolved decisions and identify which tasks they block.
 - Prefer small, independently verifiable delivery slices. For a feature, each slice should deliver one observable behavior across the layers it needs. Keep small changes together when splitting them adds handoffs without creating useful milestones.
 - For a broad migration or refactor, use compatibility steps when they let each task land safely. For example, add a compatible interface, migrate consumers in verifiable batches, and remove the old interface once its consumers are migrated. Give each step a clear outcome and verification.
 - Give each task a stable ID, outcome, scope, acceptance checks, and links to source decisions and spec criteria where available. Record only real prerequisites under `Blocked by`. Verify every referenced task ID exists, the dependency graph has no cycles, and every in-scope criterion is covered by a task or explicitly deferred.
@@ -25,7 +25,9 @@ Write checks with the relevant setup or input, action, and expected result. Carr
 
 ## Save and hand off the breakdown
 
-Use the project's task conventions or a path the developer supplied. By default, create `tasks/` beside a spec in its own change directory. For a flat spec or a conversation without a file, use `docs/specs/<change>/tasks/`. Write one Markdown file per task and a short `tasks/README.md` linking the source and tasks in dependency order. When revising an existing breakdown, preserve stable IDs and recorded progress.
+Use `docs/stories/<spec-name>/tasks/` unless the developer supplies a different path. Reuse the existing story folder for the change. If there is none, derive `<spec-name>` in kebab-case from the spec title or, for a conversation without a spec, from the agreed change name. Write one Markdown file per task and a short `tasks/README.md` linking the source and tasks in dependency order. When revising an existing breakdown, preserve stable IDs and recorded progress.
+
+Link relevant Draw.io diagrams from `docs/diagrams/`. Save any Draw.io file requested with the task breakdown in that directory.
 
 When revising tasks after an implementation pause, retain the handoff link and its historical progress. Update affected task scope, criteria, dependencies, and status from the revised spec. Identify which tasks are ready to resume and which remain paused, were deferred, or were dropped. Label recorded code changes and verification as belonging to the earlier run so a new implementer can check what is still present.
 
