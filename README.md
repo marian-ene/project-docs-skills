@@ -25,7 +25,9 @@ The `open` and `closed` folders describe skill behavior. The execution environme
 2. Copy each complete skill directory from `skills/open/` or `skills/closed/` directly into `.agents/skills/` at the target repository root. For example, copy `skills/open/tdd/` to `.agents/skills/tdd/`.
 3. Open a new agent session from that repository root. In Codex, invoke the skill by name with a `$` prefix, such as `$to-spec`. In GitHub Copilot CLI, use a `/` prefix, such as `/to-spec`. An existing Copilot CLI session can reload skills with `/skills reload`.
 
-Install `implement`, `tdd`, and `code-review` together to use the implementation workflow. TDD and Code Review can also be installed individually. The `code-review` directory includes the shared Angular 21+ UI and C# guides used by both skills.
+Install `implement`, `tdd`, and `code-review` together to use the implementation workflow. TDD and Code Review can also be installed individually.
+
+The `code-review` directory includes the shared Angular 21+ UI and C# guides. Install `code-review` alongside `grill-reqs` to apply the same guides when planning the code design.
 
 See the [Codex installation docs](https://developers.openai.com/api/reference/cli) and [GitHub Copilot CLI skill docs](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/add-skills).
 

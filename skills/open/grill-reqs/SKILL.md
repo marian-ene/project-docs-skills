@@ -50,6 +50,9 @@ Keep `why` to one concrete sentence grounded in verified behavior or confirmed i
 
 Once you and the developer agree on the behavior, scope, and acceptance criteria, make the concrete code design the final part of the discussion. Walk through the proposed changes using the current code and any developer-provided scaffold.
 
+Before proposing the design, read [Load applicable coding practices](../code-review/SKILL.md#load-applicable-coding-practices) and the guides it identifies for the affected code. Use the C# guide for C# changes and the Angular UI guide when the affected package is confirmed to use Angular 21 or later. Load both for mixed changes when applicable. If the sibling `code-review` directory is unavailable, check the other available skill locations. If the guides are still unavailable, tell the developer and proceed using the repository's documented standards.
+
+- Apply the relevant practices when choosing file layout, class responsibilities, and method boundaries. Explain which practices drive consequential design choices. Follow agreed project standards and discuss any consequential conflict with the scaffold or a proposed departure with the developer.
 - Give the repo-relative path for each relevant file. Explain which files you would create, which scaffold files you would fill in, and which existing files you would modify or reuse.
 - Name the classes or other relevant code elements in each file and explain their responsibilities. Name the methods or functions you would add, change, or call, identify where each belongs, and explain what it does. Walk through how the entry point and those methods work together to implement the agreed behavior.
 - Follow the structure the developer provided. Explain any proposed additions or departures from the scaffold and agree on them with the developer. Continue to keep code, tests, and configuration read-only during this discussion.
@@ -57,4 +60,4 @@ Once you and the developer agree on the behavior, scope, and acceptance criteria
 
 ## Hand off the agreed decisions
 
-Summarize the agreed scope, clarified acceptance criteria, code design with file paths and method responsibilities, decisions and rationale, suggested verification, and any remaining blockers. Check links in changed Markdown. Pass the existing story folder path if there is one. To Spec can use the handoff to write `docs/stories/<spec-name>/spec.md`, and To Tasks can write the breakdown under `tasks/` in the same folder.
+Summarize the agreed scope, clarified acceptance criteria, code design with file paths and method responsibilities, decisions and rationale, suggested verification, and any remaining blockers. Include the coding practices that shaped the design and any agreed departures. Check links in changed Markdown. Pass the existing story folder path if there is one. To Spec can use the handoff to write `docs/stories/<spec-name>/spec.md`, and To Tasks can write the breakdown under `tasks/` in the same folder.
