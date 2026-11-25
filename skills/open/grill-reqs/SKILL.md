@@ -1,6 +1,6 @@
 ---
 name: grill-reqs
-description: Interview the developer to clarify requirements for one upcoming change. Use project docs, code, and tests to resolve questions about a requirements brief, story, use case, or acceptance criteria and document settled decisions before implementation.
+description: Interview the developer to clarify requirements for one upcoming change. Use project docs, code, and tests to settle the behavior and acceptance criteria, then agree on the concrete code design before handing off to implementation.
 license: MIT
 ---
 
@@ -23,6 +23,7 @@ Use the user's language for the conversation. When it is a language other than E
 - Start from the requirements, story, or use case supplied by the developer. Use any existing acceptance criteria and constraints to frame the discussion. Identify the affected flow, the user-facing outcome where relevant, and any project workflow it touches.
 - When the developer brings a paused implementation handoff, read the task, spec, evidence, and the recorded question. Treat any partial code as work in progress. Clarify whether to retain the agreed scope, revise it, defer part of it, or drop the change. Record the developer's decision and what it changes for To Spec and To Tasks.
 - Follow the applicable repo instructions and start from `docs/brain/README.md` or the existing docs entry point if the project has yet to adopt this layout. Open the relevant flow pages, glossary entries, coding standards, or ADRs. Follow their links into code and tests to verify current behavior and constraints. Use focused code search to fill gaps where the docs are sparse.
+- If the developer prepared a scaffold to show the intended code structure, inspect the relevant folders and files, including empty files, stubs, and relevant untracked files. Use the scaffold as the starting structure for the code design discussion.
 - Surface discrepancies that affect the story, with links to the evidence. Keep current behavior, requested behavior, and open decisions distinct.
 
 ## Investigate the database
@@ -45,4 +46,15 @@ Keep `why` to one concrete sentence grounded in verified behavior or confirmed i
 - As decisions settle, update the owning Markdown page if the result is useful beyond this story. Capture confirmed business vocabulary, user journeys and workflows, observed behavior verified in code or tests, and durable architecture decisions or constraints. Use [documentation guidance](references/documentation.md) when choosing where to record a new note.
 - Keep proposed behavior in the story notes or mark it explicitly as an agreed future design. Document it as current behavior once verified in the implementation. Honor requests for a read-only discussion.
 
-When the story is clear enough to hand off, summarize the agreed scope, clarified acceptance criteria, decisions and rationale, suggested verification, and any remaining blockers. Check links in changed Markdown. Pass the existing story folder path if there is one. To Spec can use the handoff to write `docs/stories/<spec-name>/spec.md`, and To Tasks can write the breakdown under `tasks/` in the same folder.
+## Close the discussion with the code design
+
+Once you and the developer agree on the behavior, scope, and acceptance criteria, make the concrete code design the final part of the discussion. Walk through the proposed changes using the current code and any developer-provided scaffold.
+
+- Give the repo-relative path for each relevant file. Explain which files you would create, which scaffold files you would fill in, and which existing files you would modify or reuse.
+- Name the classes or other relevant code elements in each file and explain their responsibilities. Name the methods or functions you would add, change, or call, identify where each belongs, and explain what it does. Walk through how the entry point and those methods work together to implement the agreed behavior.
+- Follow the structure the developer provided. Explain any proposed additions or departures from the scaffold and agree on them with the developer. Continue to keep code, tests, and configuration read-only during this discussion.
+- Review the proposed design with the developer and settle open code design decisions before handing off. If the design exposes an unresolved behavior or scope decision, settle it first, then return to the code design. Record any blocker that prevents agreement as open.
+
+## Hand off the agreed decisions
+
+Summarize the agreed scope, clarified acceptance criteria, code design with file paths and method responsibilities, decisions and rationale, suggested verification, and any remaining blockers. Check links in changed Markdown. Pass the existing story folder path if there is one. To Spec can use the handoff to write `docs/stories/<spec-name>/spec.md`, and To Tasks can write the breakdown under `tasks/` in the same folder.
