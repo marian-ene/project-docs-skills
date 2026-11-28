@@ -105,6 +105,6 @@ Create folders as needed. Use relative links between project pages, story artifa
 
 ## How links are maintained
 
-Project Mapping and Grill Reqs keep a local per-worktree journal of the Markdown links they see and actually use. A followed link earns one point per invocation when it helps with the work. The score counts usage over the last 90 days. An older link with no recent use becomes a review candidate only when there is evidence that the area is still being worked on. Link repairs and cleanup depend on evidence from the current docs and code.
+Project Mapping and Grill Reqs share a journal of the Markdown links they see and actually use. The journal groups each link by source and destination. A followed link earns one point per invocation when it helps with the work. The score counts usage over the last 90 days. An older link with no recent use becomes a review candidate only when there is evidence that the area is still being worked on. Link repairs and cleanup depend on evidence from the current docs and code.
 
-Grill Reqs handles this maintenance during regular story work. Project Mapping can review a wider area. Both skills use `docs/brain/link-usage.json` by default and keep it untracked. When creating this journal, they import valid history from prior journal locations.
+Grill Reqs handles this maintenance during regular story work. Project Mapping can review a wider area. Both skills use `docs/brain/link-usage.json` by default and keep new journals untracked. When creating or migrating this journal, they import valid history from prior journal locations.
